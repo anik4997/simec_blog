@@ -7,20 +7,14 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    // public function index() {
-    //     $posts = Post::latest()->take(10)->get();
-    //     return view('posts.index', compact('posts'));
-    // }
-    public function index() {
-        $posts = Post::latest()->take(10)->get();
+    public function index()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         $hasPosts = $posts->count() > 0;
-    
-        return view('posts.index', [
-            'posts' => $posts,
-            'hasPosts' => $hasPosts
-        ]);
+
+        return view('posts.index', compact('posts', 'hasPosts'));
     }
-    
+
     public function show($id) {
         $post = Post::findOrFail($id);
         return view('posts.show', compact('post'));

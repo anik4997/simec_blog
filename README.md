@@ -1,61 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+#  Mini Blog Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a simple blog platform where users can create, view, and read blog posts. It uses Laravel Blade templates with a clean Bootstrap 5 UI. The app supports post pagination, "read more" toggle, and detailed post view with timestamps.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+##  Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Create new blog posts
+- Show list of all posts with pagination
+- "Read More" toggle for long posts
+- View full details of a single post
+- Responsive design with Bootstrap 5
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+##  Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.2.12
+- Composer
+- XAMPP v3.3.0 (includes Apache, PHP, and MySQL)
+- MySQL (XAMPP default – typically MySQL 8.0+)
+- Laravel 10+ (recommended)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+##  Database Setup
 
-## Laravel Sponsors
+**Database name:** `mini_blog_project`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Steps to create the database:**
 
-### Premium Partners
+1. Open [phpMyAdmin](http://localhost/phpmyadmin).
+2. Click on **"New"**.
+3. Enter the database name: `mini_blog_project` and click **"Create"**.
+4. Import the provided `mini_blog_project.sql` file (if available) or run migrations.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## Installation Guide
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Follow these steps to run the project locally:
 
-## Code of Conduct
+### 1. Clone the Repository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/anik4997/mini-blog-project.git
+cd mini-blog-project
+```
 
-## Security Vulnerabilities
+### 2. Install Dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+### 3. Create `.env` File
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+```
+
+Update the `.env` file with your database settings:
+
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mini_blog_project
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+> Leave `DB_PASSWORD` blank if you're using XAMPP default settings.
+
+---
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+---
+
+### 5. Run Migrations
+
+```bash
+php artisan migrate
+```
+
+### 6. Serve the Application
+
+```bash
+php artisan serve
+```
+
+Visit the app at: [http://localhost:8000](http://localhost:8000)
+
+---
+
+##  Project Structure (Simplified)
+
+```
+mini-blog-project/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       └── PostController.php
+│   └── Models/
+│       └── Post.php
+├── bootstrap/
+├── database/
+│   └── migrations/
+├── public/
+│   └── index.php
+├── resources/
+│   └── views/
+│       └── posts/
+│           ├── create.blade.php
+│           ├── index.blade.php
+│           └── show.blade.php
+├── routes/
+│   └── web.php
+├── .env
+└── README.md
+
+```
+
+---
+
+## Author
+
+Developed by Oli Ahammed Sarker
+Feel free to use or extend this project for learning purposes.
+
+---
